@@ -937,7 +937,7 @@ void CcdPhysicsEnvironment::SetDebugMode(int debugMode)
 
 void CcdPhysicsEnvironment::SetNumIterations(int numIter)
 {
-  m_numIterations = numIter;
+  m_dynamicsWorld->getSolverInfo().m_numIterations = numIter;
 }
 void CcdPhysicsEnvironment::SetDeactivationTime(float dTime)
 {
