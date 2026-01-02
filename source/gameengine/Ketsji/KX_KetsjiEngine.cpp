@@ -133,7 +133,7 @@ KX_KetsjiEngine::KX_KetsjiEngine(KX_ISystem *system,
       m_clockTime(0.0f),
       m_previousAnimTime(0.0f),
       m_timescale(1.0f),
-      m_previousRealTime(-0.016f),
+      m_previousRealTime(0.0f),
       m_maxLogicFrame(5),
       m_maxPhysicsFrame(5),
       m_ticrate(DEFAULT_LOGIC_TIC_RATE),
@@ -252,7 +252,10 @@ void KX_KetsjiEngine::StartEngine()
 {
   // Reset the clock to start at 0.0.
   m_clock.Reset();
-
+  
+  m_clockTime = m_clock.GetTimeSecond();
+  m_previousRealTime = m_clockTime - 1.0 / m_ticrate;
+  
   m_bInitialized = true;
 }
 
